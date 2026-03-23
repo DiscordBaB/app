@@ -5,10 +5,12 @@ This guide helps you integrate the DBAB Dashboard with your DBAB API.
 ## Quick Start
 
 1. **Ensure API is running**:
+
    ```bash
    cd ../dbab-api
    python main.py
    ```
+
    API should be running on `http://localhost:3000`
 
 2. **Configure Discord OAuth2**:
@@ -41,7 +43,7 @@ Response: { "url": "https://discord.com/api/oauth2/authorize?..." }
 
 POST /auth/discord-callback
 Body: { "code": "oauth_code" }
-Response: { 
+Response: {
   "token": "jwt_token",
   "user": {
     "id": "user_id",
@@ -53,7 +55,7 @@ Response: {
 
 GET /auth/me
 Headers: Authorization: Bearer {token}
-Response: { 
+Response: {
   "id": "user_id",
   "discordId": "discord_id",
   "discordTag": "username#0000",
@@ -140,15 +142,18 @@ Response: Appeal
 ## Troubleshooting
 
 **CORS Errors?**
+
 - Make sure your DBAB API has CORS configured for `http://localhost:5173`
 - Add CORS headers to your API responses
 
 **Auth not working?**
+
 - Verify Discord OAuth2 redirect URI is set correctly
 - Check that your API is returning tokens in the correct format
 - Ensure tokens are JWT formatted
 
 **Can't see any guilds?**
+
 - Verify the bot is in your guilds
 - Check that the API correctly returns guilds where the user is owner
-- Ensure appealss are properly stored in the database
+- Ensure appeals are properly stored in the database
